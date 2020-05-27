@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.truetech.study.db.mapper.AccountMapper">
+    <insert id="append" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO account (name, birthday, insert_time, update_time) VALUES (#{name}, #{birthday}, #{insertTime}, #{updateTime})
+    </insert>
+    <select id="findById" resultType="jp.truetech.study.db.entity.Account">
+        SELECT id, name, birthday, insert_time, update_time from account WHERE id = #{param0}
+    </select>
+    <update id="updateName">
+        UPDATE account set 
+        <!-- 
+        name = #{arg1}, update_time = #{arg2} WHERE id = #{arg0}
+        name = #{param2}, update_time = #{param3} WHERE id = #{param1}
+         -->
+        name = #{name}, update_time = #{updateTime} WHERE id = #{id}
+    </update>
+</mapper>
